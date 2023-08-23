@@ -191,7 +191,8 @@ exec_always $nsi echo "#TabsToolbar { visibility: collapse !important; }" >> ~/.
 
 exec_always $nsi picom -b
 exec_always $nsi xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" "libinput Tapping Enabled" 1
-exec_always $nsi wal -i ~/Pictures/wallpapers/
+exec_always $nsi wal -i ~/Pictures/wallpapers/ && pywalfox update
+
 
 gaps inner 10
 gaps outer 10
@@ -224,6 +225,7 @@ client.background       $bg
 # i3status
 bar {
     status_command i3status
+    tray_output primary
     colors {
         background $ca
         statusline $fg
@@ -236,3 +238,5 @@ bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 default_border pixel
 default_floating_border pixel
+exec_always $nsi keepassxc
+exec_always $nsi thunderbird
