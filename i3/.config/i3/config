@@ -222,21 +222,16 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
 
-# i3status
-bar {
-    status_command i3status
-    tray_output primary
-    colors {
-        background $ca
-        statusline $fg
-        separator $fg
-    }
-}
-
 # PROTIP: You can also dynamically set dmenu's colors this way:
 bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
-
+bindsym $mod+p exec rofi -show drun
 default_border pixel
 default_floating_border pixel
-exec_always $nsi keepassxc
-exec_always $nsi thunderbird
+exec $nsi keepassxc
+exec $nsi thunderbird
+
+bar {
+    status_command i3status
+}
+
+#exec_always $nsi ~/.config/polybar/init.sh
