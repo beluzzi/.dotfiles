@@ -189,7 +189,7 @@ bindsym $mod+o exec $nsi obsidian
 
 bindsym $mod+Shift+i exec kitty -e vim ~/.config/i3/config
 
-exec_always $nsi grep -qxF '"#TabsToolbar { visibility: collapse !important; }"' $mozilla || echo '"#TabsToolbar { visibility: collapse !important; }"' >> $mozilla 
+exec_always $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla 
 
 exec_always $nsi picom -b
 exec_always $nsi wal -i ~/.dotfiles/.wallpapersdesktop/ && pywalfox update
