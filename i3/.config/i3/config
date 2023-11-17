@@ -191,7 +191,6 @@ bindsym $mod+Shift+i exec kitty -e vim ~/.config/i3/config
 
 
 exec_always $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla 
-
 exec_always $nsi picom -b
 exec_always $nsi xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" "libinput Tapping Enabled" 1
 exec_always $nsi wal -i ~/.dotfiles/.wallpapers/ && pywalfox update
@@ -237,4 +236,3 @@ bar {
     status_command i3status
 }
 
-#exec_always $nsi ~/.config/polybar/init.sh
