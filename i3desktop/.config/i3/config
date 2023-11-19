@@ -230,6 +230,7 @@ default_border pixel
 default_floating_border pixel
 exec $nsi keepassxc
 exec $nsi thunderbird
+exec $nsi kdeconnect-indicator
 
 bar {
     #output primary
