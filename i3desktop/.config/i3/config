@@ -186,7 +186,7 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+x exec $nsi firefox
 bindsym $mod+o exec $nsi obsidian
-
+bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+Shift+i exec kitty -e vim ~/.config/i3/config
 
 exec_always $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla 
@@ -231,6 +231,8 @@ default_floating_border pixel
 exec $nsi keepassxc
 exec $nsi thunderbird
 exec $nsi kdeconnect-indicator
+exec $nsi flameshot
+
 
 bar {
     #output primary
