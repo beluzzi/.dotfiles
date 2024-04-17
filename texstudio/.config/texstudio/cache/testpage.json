@@ -1,0 +1,50 @@
+{
+    "bibitems": [
+    ],
+    "bibtexfiles": [
+    ],
+    "childdocs": [
+    ],
+    "filename": "/home/beluzzi/Documents/Latex/thesis/thesis/testpage.tex",
+    "labels": [
+        "fig:plot-right",
+        "fig:3D-Plot",
+        "fig:left-figure",
+        "lst:myjavacode",
+        "subsec:subsection",
+        "tab:myfirsttable",
+        "fig:function",
+        "subsubsec:subsubsection",
+        "lst:mycppcode",
+        "chap:testpage",
+        "sec:section",
+        "fig:both-figures",
+        "fig:plot-left",
+        "fig:genom",
+        "fig:right-figure"
+    ],
+    "modified": "Fri Apr 12 01:45:59 2024",
+    "packages": [
+    ],
+    "refs": [
+        "chap:state_of_the_art",
+        "fig:genom",
+        "lst:myjavacode",
+        "tab:myfirsttable",
+        "tab:myfirsttable",
+        "lst:mycppcode",
+        "fig:3D-Plot",
+        "fig:genom",
+        "fig:both-figures",
+        "fig:right-figure",
+        "fig:left-figure"
+    ],
+    "toc": [
+        "1#Testpage#0",
+        "2#section#3",
+        "3#subsection#45",
+        "4#subsubsection#62"
+    ],
+    "usercommands": [
+    ]
+}

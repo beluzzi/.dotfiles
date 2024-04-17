@@ -1,0 +1,36 @@
+{
+    "bibitems": [
+    ],
+    "bibtexfiles": [
+    ],
+    "childdocs": [
+    ],
+    "filename": "/home/beluzzi/Documents/Latex/thesis/thesis/introduction.tex",
+    "labels": [
+        "sec:motivation",
+        "sec:aims",
+        "sec:structure",
+        "sec:problems",
+        "chap:introduction"
+    ],
+    "modified": "Fri Apr 12 01:45:59 2024",
+    "packages": [
+    ],
+    "refs": [
+        "chap:discussion",
+        "chap:state_of_the_art",
+        "sec:structure",
+        "sec:motivation",
+        "chap:chapterx",
+        "chap:summarisation"
+    ],
+    "toc": [
+        "1#Introduction#0",
+        "2#Motivation#3",
+        "2#Problems#7",
+        "2#Aims#11",
+        "2#Structure#15"
+    ],
+    "usercommands": [
+    ]
+}

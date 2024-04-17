@@ -1,16 +1,136 @@
 {
     "InternalPDFViewer": {
-        "Embedded": false,
-        "File": ""
+        "Embedded": true,
+        "File": "../../Documents/Latex/thesis/thesis.pdf"
     },
     "Session": {
         "Bookmarks": [
         ],
-        "CurrentFile": "",
+        "CurrentFile": "../../Documents/Latex/thesis/thesis.tex",
         "FileVersion": 1,
         "Files": [
+            {
+                "Col": 36,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis.tex",
+                "FirstLine": 13,
+                "FoldedLines": "",
+                "Line": 40
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/statutory_declaration.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/appendix.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/discussion_outlook.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/chapterx.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/state_of_the_art.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/testpage.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/list_of_abbreviations.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis/titlepage.tex",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 38
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../../../usr/share/texmf-dist/tex/latex/koma-script/scrreprt.cls",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../../../usr/share/texmf-dist/tex/latex/koma-script/listings.hak",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis.toc",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 34
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis.lof",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 15
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis.lot",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 12
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Documents/Latex/thesis/thesis.lol",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 13
+            }
         ],
-        "MasterFile": "",
+        "MasterFile": "../../Documents/Latex/thesis/thesis.tex",
         "VerticalSplit": false
     }
 }
