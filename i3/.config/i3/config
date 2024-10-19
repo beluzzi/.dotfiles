@@ -230,7 +230,8 @@ bindsym $mod+p exec rofi -show drun
 default_border pixel
 default_floating_border pixel
 exec $nsi keepassxc
-exec $nsi thunderbird
+# exec $nsi thunderbird
+exec $nsi kdeconnect-indicator
 
 bar {
     status_command i3status
