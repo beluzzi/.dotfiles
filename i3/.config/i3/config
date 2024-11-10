@@ -186,7 +186,6 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+x exec $nsi firefox
 bindsym $mod+o exec $nsi obsidian
-
 bindsym $mod+Shift+i exec kitty -e vim ~/.config/i3/config
 
 
@@ -229,6 +228,7 @@ bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 bindsym $mod+p exec rofi -show drun
 default_border pixel
 default_floating_border pixel
+exec_always $nsi pasystray
 exec $nsi keepassxc
 # exec $nsi thunderbird
 exec $nsi kdeconnect-indicator
