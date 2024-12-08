@@ -62,10 +62,10 @@ bindsym $mod+q kill
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -186,6 +186,7 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+x exec $nsi firefox
 bindsym $mod+o exec $nsi obsidian
+bindsym $mod+l exec $nsi logseq
 bindsym $mod+Shift+i exec kitty -e vim ~/.config/i3/config
 
 
@@ -228,7 +229,7 @@ bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 bindsym $mod+p exec rofi -show drun
 default_border pixel
 default_floating_border pixel
-exec_always $nsi pasystray
+exec $nsi pasystray
 exec $nsi keepassxc
 # exec $nsi thunderbird
 exec $nsi kdeconnect-indicator
