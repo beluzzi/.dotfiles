@@ -1,0 +1,19 @@
+#i3blocks configuration file
+seperator_block_width=10
+
+#date
+[date]
+command=date '+%Y-%m-%d %H:%M'
+interval=15
+
+#memory
+[memory]
+command=free -h | awk '/^Mem/ {print $3 "/" $2}'
+interval=10
+
+#cpu
+[cpu]
+command=awk '/^cpu / {total=$2+$3+$4+$5+$6+$7+$8; idle=$5; printf "%.2f%%\n", 100 * (total-idle) / total "%"}' /proc/stat
+interval=10
+
+

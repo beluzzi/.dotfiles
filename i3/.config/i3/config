@@ -236,6 +236,9 @@ exec $nsi keepassxc
 exec $nsi kdeconnect-indicator
 
 bar {
-    status_command i3status
-}
-
+    status_command i3blocks
+    colors {
+	background		$bg
+	focused_workspace	$fg	$c0	$c2
+    }
+} 
