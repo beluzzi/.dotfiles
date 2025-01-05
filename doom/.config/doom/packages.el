@@ -49,6 +49,7 @@
 ;; (unpin! t)
 ;;
 
-(package! tldr) ;;command loopup utility
+(package! tldr) ;;command lookup utility
 (package! ewal) ;;pywal theme
 (package! ewal-doom-themes) ;;pywal theme
+(package! org-roam) ;;pkm graph

@@ -88,3 +88,5 @@
 
 ;; enables pasting
 (setq select-enable-clipboard t)
+
+projectile-project-search-path '("~/Code/")
