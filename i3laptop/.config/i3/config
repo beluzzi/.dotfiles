@@ -1,0 +1,10 @@
+# imports main i3config
+include ~/.dotfiles/i3/config
+
+# ▗▖    ▗▄▖ ▗▄▄▖▗▄▄▄▖▗▄▖ ▗▄▄▖ 
+# ▐▌   ▐▌ ▐▌▐▌ ▐▌ █ ▐▌ ▐▌▐▌ ▐▌
+# ▐▌   ▐▛▀▜▌▐▛▀▘  █ ▐▌ ▐▌▐▛▀▘ 
+# ▐▙▄▄▖▐▌ ▐▌▐▌    █ ▝▚▄▞▘▐▌   
+
+# this changes trackpad 'taps' to be 'clicks'
+exec_always $nsi xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" "libinput Tapping Enabled" 1

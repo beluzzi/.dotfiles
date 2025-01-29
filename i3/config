@@ -51,7 +51,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -156,7 +156,7 @@ mode "resize" {
 
 bindsym $mod+x exec $nsi firefox
 bindsym $mod+o exec $nsi obsidian
-bindsym $mod+Shift+i exec kitty -e vim ~/.config/i3/config
+bindsym $mod+Shift+i exec kitty -e vim ~/.dotfiles/i3/config
 bindsym $mod+e exec $nsi emacsclient -c -a 'emacs'
 bindsym $mod+Return exec kitty
 
@@ -185,14 +185,11 @@ exec $nsi nm-applet
 # this hides the top bar of firefox since tabs are managed with the sideberry plugin
 exec_always $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla
 
+# this sets a random wallpaper using pywal & launches the theme script to enable theming for other programs
+exec_always $nsi wal -i ~/.config/.wallpapers/ && exec ~/.dotfiles/scripts/theme.sh
+
 # i3 compositor
 exec_always $nsi picom -b
-
-# this changes trackpad 'taps' to be 'clicks'
-exec_always $nsi xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" "libinput Tapping Enabled" 1
-
-# this sets a random wallpaper using pywal & launches the theme script to enable theming for other programs
-exec_always $nsi wal -i ~/.dotfiles/.wallpapers/ && exec ~/.dotfiles/scripts/theme.sh
 
 # starts an emacs deamon
 exec $nsi emacs --daemon
