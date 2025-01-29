@@ -1,5 +1,5 @@
 # Define the directories for stowing, excluding i3laptop and i3desktop
-DOTFILES_DIRS := doom keepass kitty rofi i3blocks
+DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit
 
 # Define the default target
 .PHONY: all clean laptop desktop help
