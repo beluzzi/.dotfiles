@@ -2,7 +2,7 @@
 DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit
 
 # Define the default target
-.PHONY: all clean laptop desktop help
+.PHONY: all clean i3  laptop desktop help
 
 # Default target to stow all packages except i3 and i3desktop
 all:
@@ -10,6 +10,13 @@ all:
 	@for dir in $(DOTFILES_DIRS); do \
 		stow $$dir; \
 	done
+
+# Target to stow default i3 configuration
+i3 :
+	@echo "Stowing i3..."
+	@stow i3
+	@stow wallpapers
+	@i3-msg reload
 
 # Target to stow all packages except the i3 and i3desktop directories
 desktop: all
@@ -39,6 +46,7 @@ help:
 	@echo "Makefile for managing dotfiles with stow"
 	@echo "Usage:"
 	@echo "  make all          - Stow all packages except i3"
+	@echo "  make i3      - Stow main i3 configuragtion
 	@echo "  make laptop  - Stow laptop configuration"
 	@echo "  make desktop - Stow desktop configuration"
 	@echo "  make clean        - Remove all symlinks"
