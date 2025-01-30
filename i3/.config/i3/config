@@ -72,6 +72,7 @@ bindsym $mod+f fullscreen toggle
 
 # i dont really have a use for this so commented out
 # if ever uncommented !conflict with screenshot bind!
+# needs magick and xclip to work: https://imagemagick.org/script/import.php
 
 # bindsym $mod+Shift+s layout stacking
 # bindsym $mod+Shift+w layout tabbed
