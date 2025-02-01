@@ -1,3 +1,0 @@
-##Experimental imagemagick script to generate multi monitor backgrounds
-convert -background none 1.jpg   \( -size 240x240 xc:none +append \( 2.jpg -resize 2560x1440! \) -append \)   \( -size 420x420 xc:none 3.jpg -append \) +append wallpaperNew.jpg
-
