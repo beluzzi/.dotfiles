@@ -198,7 +198,7 @@ exec_always $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $
 exec_always $nsi wal -i ~/.config/.wallpapers/ && exec ~/.dotfiles/scripts/theme.sh
 
 # i3 compositor
-exec_always $nsi picom -b
+exec $nsi picom -b
 
 # starts an emacs deamon
 exec $nsi emacs --daemon

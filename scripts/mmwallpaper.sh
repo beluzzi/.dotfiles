@@ -1,24 +1,54 @@
 #!/bin/bash
 
-# Set screen sizes
-s1=1080x1920
-s2=2560x1440
-s3=1920x1080
+# Monitor resolutions (width x height)
+s1=1080x1920    # Left (portrait)
+s2=2560x1440    # Middle
+s3=1920x3000    # Right (tallest test case)
 
-# Extract the second part (height) from each variable
-height1=$(echo $s1 | cut -d'x' -f2)
-height2=$(echo $s2 | cut -d'x' -f2)
-height3=$(echo $s3 | cut -d'x' -f2)
+screens=("$s1" "$s2" "$s3")
 
-# Calculate the difference and divide by 2
-box1=$(( (height1 - height2) / 2 ))
-box2=$(( (height1 - height3) / 2 ))
+# Use arrays to store dimensions cleanly
+# width, height, box -> the spacer height on top of each image
+declare -a w h b
+
+# Extract widths, heights using array indices
+for i in "${!screens[@]}"; do
+ IFS='x' read -r w[i] h[i] <<< "${screens[i]}"
+done
+
+# Find maximum height
+hm=$(printf "%s\n" "${h[@]}" | sort -n | tail -n1)
+
+# Set value for box heights -> we need hm for this
+for i in "${!h[@]}"; do
+  b[i]=$(( (hm - h[i]) / 2 ))
+done
 
 # Literally magick
-magick -background none \
-1.jpg -resize $s1! \
-\( -size ${box1}x${box1} xc:none +append \
-	 \( 2.jpg -resize $s2! \) -append \) \
-\( -size ${box2}x${box2} xc:none +append \
-	\( 3.jpg -resize $s3! \) -append \) \
- +append wallpaperNew.jpg
+
+cmd=""
+for i in "${!screens[@]}"; do
+    printf -v fragment '\( -size %sx%s xc:none -append \( %d.jpg -resize %s! \) -append \)' \
+        "${w[i]}" "${b[i]}" "$((i+1))" "${screens[i]}"
+    cmd+=" $fragment"
+done
+
+# Execute with proper quoting using eval
+eval "magick -background none $cmd +append wallpaperNew.jpg"
+
+# This 'totally' useful loop is basically a product of
+# 
+# “Your scientists were so preoccupied with whether they could,
+# they didn’t stop to think if they should.”
+#
+# I still like to think its a bit cool
+#
+# 1. initialize an empty string
+# 2. loop through the screen array indices
+# 3. use printf -v (to store in a variable)
+# 	- store in the temp string 'fragment'
+# 	- replace %s -> strings and %d -> decimals
+# 	- concatenate cmd to store as many images as needed
+# 4. eval end result to get magick to actually execute $cmd
+
+
