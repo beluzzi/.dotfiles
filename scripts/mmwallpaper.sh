@@ -6,6 +6,7 @@ s2=2560x1440    # Middle
 s3=1920x3000    # Right (tallest test case)
 
 # Manual offset -> the script centers to tallest screen by default
+# o1=200 -> first screen down by 200px and -200 -> 200px up
 o1=0
 o2=0
 o3=0
@@ -28,7 +29,6 @@ hm=$(printf "%s\n" "${h[@]}" | sort -n | tail -n1)
 # Set value for box heights -> we need hm for this
 for i in "${!h[@]}"; do
 	b[i]=$((( (hm - h[i]) / 2 )+${offsets[i]}))
-	echo $i
 done
 
 # Literally magick
