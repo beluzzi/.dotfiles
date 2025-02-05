@@ -5,7 +5,13 @@ s1=1080x1920    # Left (portrait)
 s2=2560x1440    # Middle
 s3=1920x3000    # Right (tallest test case)
 
+# Manual offset -> the script centers to tallest screen by default
+o1=0
+o2=0
+o3=0
+
 screens=("$s1" "$s2" "$s3")
+offsets=("$o1" "$o2" "$o3")
 
 # Use arrays to store dimensions cleanly
 # width, height, box -> the spacer height on top of each image
@@ -21,7 +27,8 @@ hm=$(printf "%s\n" "${h[@]}" | sort -n | tail -n1)
 
 # Set value for box heights -> we need hm for this
 for i in "${!h[@]}"; do
-  b[i]=$(( (hm - h[i]) / 2 ))
+	b[i]=$((( (hm - h[i]) / 2 )+${offsets[i]}))
+	echo $i
 done
 
 # Literally magick
