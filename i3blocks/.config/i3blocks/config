@@ -28,14 +28,8 @@ border_bottom=0
 border_left=0
 
 [mediaplayer]
-command=playerctl metadata --format "{{ artist }} <span color=\"#bd93f9\">-</span> {{ title }}"
+command=~/.config/i3blocks/scripts/media.sh
 interval=2
-label=<span color="#bd93f9">   </span>
-border=#bd93f9
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
 
 [arch_update]
 command=checkupdates | wc -l
