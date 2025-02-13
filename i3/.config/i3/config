@@ -11,7 +11,8 @@ set $mozilla ~/.mozilla/firefox/p2gzocof.default-release-1710425565724/chrome/us
 
 # font for window titles + bar unless a different font is used in the bar {} block below.
 
-font pango:jetbrains mono-nerd 8
+font pango:JetBrainsMono Nerd Font 8
+
 
 # start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -259,7 +260,7 @@ default_floating_border pixel
 
 bar {
     position top
-#    status_command i3blocks
+    status_command i3blocks
     colors {
 	background		$bg
 	focused_workspace	$fg	$c0	$c2
