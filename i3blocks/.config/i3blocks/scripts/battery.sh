@@ -17,8 +17,9 @@ if [[ "$STATUS" == "charging" ]]; then
 elif [[ $PERCENTAGE -ge 80 ]]; then
     ICON="🔋"
 elif [[ $PERCENTAGE -ge 40 ]]; then
-    ICON="🔅"\else
-    ICON="⚠️"
+    ICON="⛔"
+elif [[ $PERCENTAGE -ge 0 ]]; then
+    ICON="💣"
 fi
 
 # Output for i3blocks

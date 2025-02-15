@@ -14,7 +14,7 @@ markup=pango
 
 [battery]
 command=~/.config/i3blocks/scripts/battery.sh
-interval=60
+interval=30
 
 [pomodoro]
 command=~/.config/i3blocks/scripts/pomodoro.sh
