@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Define function to handle metadata display
-get_metadata() {
-    playerctl metadata --format "{{ artist }} <span color=\"#bd93f9\">-</span> {{ title }}"
-}
+playerctl metadata --format "{{ artist }} <span color=\"#bd93f9\">-</span> {{ title }}"
 
 # Define function for previous track
 previous_song() {
@@ -20,13 +17,6 @@ toggle_pause() {
     playerctl play-pause
 }
 
-# Define border styles
-border="#bd93f9"
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
-
 # Get mouse click actions
 case $BLOCK_BUTTON in
     1) # Left click (Previous song)
@@ -41,7 +31,3 @@ case $BLOCK_BUTTON in
     *)
         ;;
 esac
-
-# Output metadata for the blocklet
-echo "<span color=\"$border\">   </span> $(get_metadata)"
-
