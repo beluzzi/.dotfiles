@@ -33,7 +33,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # ▐▌ ▐▌  █  ▐▌ ▝▜▌▐▌  █▐▌ ▐▌▐▌ ▐▌ ▝▀▚▖
 # ▐▙█▟▌▗▄█▄▖▐▌  ▐▌▐▙▄▄▀▝▚▄▞▘▐▙█▟▌▗▄▄▞▘
 
-for_window [instance="keepassxc" class="KeePassXC"] floating enable 
+assign [class="KeePassXC"] workspace 10
 
 floating_modifier $mod
 bindsym $mod+q kill

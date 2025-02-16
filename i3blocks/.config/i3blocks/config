@@ -51,16 +51,6 @@ border_right=0
 border_bottom=0
 border_left=0
 
-[volume]
-command=pulseaudio-ctl full-status | awk '{ printf "%i<span color=\"#bd93f9\">%</span>\n", $1 }'
-interval=1
-label=<span color="#bd93f9"> </span>
-border=#bd93f9
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
-
 [time_gmt+1]
 command=TZ=":Poland" date '+%I : %M %Z' | awk '{ printf "%s<span color=\"#f1fa8c\">%s</span>%s<span color=\"#f1fa8c\"> %s</span>\n", $1, $2, $3, $4 }'
 interval=1

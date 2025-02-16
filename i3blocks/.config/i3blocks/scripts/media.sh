@@ -1,23 +1,57 @@
 #!/bin/bash
 
-playerctl metadata --format "{{ artist }} <span color=\"#bd93f9\">-</span> {{ title }}"
+# Function to get the current song's artist and title
+song_metadata() {
+    playerctl metadata --format "{{ artist }} <span color=\"#bd93f9\">-</span> {{ title }}"
+}
 
-# Define function for previous track
+# Function to get the current volume
+get_volume() {
+    # Get the current volume level (0 to 100) from PulseAudio
+     pactl get-sink-volume @DEFAULT_SINK@ | awk '{gsub("%", ""); print $5}'
+}
+
+# Function to set the volume
+set_volume() {
+    pactl set-sink-volume @DEFAULT_SINK@ "$1"
+}
+
+# Function to handle the previous song
 previous_song() {
     playerctl previous
 }
 
-# Define function for next track
+# Function to handle the next song
 next_song() {
     playerctl next
 }
 
-# Define function for pause/play
+# Function to toggle play/pause
 toggle_pause() {
     playerctl play-pause
 }
 
-# Get mouse click actions
+# Function to change the volume based on scroll direction
+adjust_volume() {
+    current_volume=$(get_volume)
+
+    if [ "$1" -eq 4 ]; then  # Scroll up (increase volume)
+        new_volume=$((current_volume + 5))
+        if [ "$new_volume" -le 100 ]; then
+            set_volume "${new_volume}%"
+        fi
+    elif [ "$1" -eq 5 ]; then  # Scroll down (decrease volume)
+        new_volume=$((current_volume - 5))
+        if [ "$new_volume" -ge 0 ]; then
+            set_volume "${new_volume}%"
+        fi
+    fi
+}
+
+# Display metadata along with the volume (headphone emoji)
+echo "$(song_metadata) 🎧 $(get_volume)%"
+
+# Handle mouse click actions
 case $BLOCK_BUTTON in
     1) # Left click (Previous song)
         previous_song
@@ -27,6 +61,12 @@ case $BLOCK_BUTTON in
         ;;
     3) # Right click (Next song)
         next_song
+        ;;
+    4) # Scroll up (Increase volume)
+        adjust_volume 4
+        ;;
+    5) # Scroll down (Decrease volume)
+        adjust_volume 5
         ;;
     *)
         ;;
