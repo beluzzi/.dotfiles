@@ -11,3 +11,5 @@ configuration{
     display-run: " ";
     display-window: " ";
 }
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
