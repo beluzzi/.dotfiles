@@ -211,7 +211,7 @@ exec $nsi nm-applet
 
 # appends #TabsToolbar { visibility: collapse !important; } to to userChrome.css if not already present
 # this hides the top bar of firefox since tabs are managed with the sideberry plugin
-exec_always $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla
+exec $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla
 
 # this sets a random wallpaper using pywal & launches the theme script to enable theming for other programs
 exec_always $nsi wal -i ~/.config/.wallpapers/ && exec ~/.dotfiles/scripts/theme.sh
