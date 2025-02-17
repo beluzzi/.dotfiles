@@ -8,8 +8,8 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias d='cd ~/.dotfiles'
-alias ga='git add .'
 
+# Git fast commit func
 gfc() {
     if [ $# -eq 0 ]; then
         echo "Error: You must provide a commit message."
