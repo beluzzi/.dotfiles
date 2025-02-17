@@ -14,10 +14,12 @@ fi
 # Define icons based on charge status
 if [[ "$STATUS" == "charging" ]]; then
     ICON="⚡"
-elif [[ $PERCENTAGE -ge 80 ]]; then
+elif [[ $PERCENTAGE == 100 ]]; then
+    ICON="💡"
+elif [[ $PERCENTAGE -ge 60 ]]; then
     ICON="🔋"
-elif [[ $PERCENTAGE -ge 40 ]]; then
-    ICON="⛔"
+elif [[ $PERCENTAGE -ge 20 ]]; then
+    ICON="🪫"
 elif [[ $PERCENTAGE -ge 0 ]]; then
     ICON="💣"
 fi
