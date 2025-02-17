@@ -183,6 +183,7 @@ bindsym $mod+o exec $nsi obsidian
 bindsym $mod+Shift+i exec kitty -e vim ~/.dotfiles/i3/.config/i3/config
 bindsym $mod+e exec $nsi emacsclient -c -a 'emacs'
 bindsym $mod+Return exec kitty
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 
 # other shortcuts
 
