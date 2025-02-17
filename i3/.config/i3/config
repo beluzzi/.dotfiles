@@ -33,7 +33,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # ▐▌ ▐▌  █  ▐▌ ▝▜▌▐▌  █▐▌ ▐▌▐▌ ▐▌ ▝▀▚▖
 # ▐▙█▟▌▗▄█▄▖▐▌  ▐▌▐▙▄▄▀▝▚▄▞▘▐▙█▟▌▗▄▄▞▘
 
-assign [class="KeePassXC"] workspace 10
+assign [class="KeePassXC"] workspace $wsk
 
 floating_modifier $mod
 bindsym $mod+q kill
@@ -106,6 +106,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $wsk "k"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -118,6 +119,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+k workspace $wsk
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1

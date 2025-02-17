@@ -2,7 +2,14 @@
 DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit picom bashrc
 
 # Define the default target
-.PHONY: all clean i3  laptop desktop help
+.PHONY: all clean i3 sway laptop desktop help
+
+# Experimental Sway config
+
+sway:
+	@echo "Stowing sway..."
+	@stow sway
+	@swaymsg reload
 
 # Default target to stow all packages except i3 and i3desktop
 all:
