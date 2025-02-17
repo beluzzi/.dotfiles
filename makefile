@@ -1,5 +1,5 @@
 # Define the directories for stowing, excluding i3laptop and i3desktop
-DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit picom bashrc
+DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit picom bashrc firefox
 
 # Define the default target
 .PHONY: all clean i3 sway laptop desktop help
