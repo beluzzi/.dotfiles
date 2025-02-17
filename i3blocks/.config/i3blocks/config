@@ -51,19 +51,9 @@ border_right=0
 border_bottom=0
 border_left=0
 
-[time_gmt+1]
-command=TZ=":Poland" date '+%I : %M %Z' | awk '{ printf "%s<span color=\"#f1fa8c\">%s</span>%s<span color=\"#f1fa8c\"> %s</span>\n", $1, $2, $3, $4 }'
-interval=1
-label=<span color="#f1fa8c">  </span>
-border=#f1fa8c
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
-
 [date]
-command=LC_ALL="UTF-8" date '+%Y %B %d' | awk '{ printf "%s<span color=\"#ff5555\">%s%s</span>%s<span color=\"#ff5555\">%s %s</span>\n", $1, $2, $3, $4, $5, $6 }'
-interval=60
+command=~/.config/i3blocks/scripts/date.sh
+interval=1
 label=<span color="#ff5555">  </span>
 border=#ff5555
 border_top=1

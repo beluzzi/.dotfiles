@@ -16,6 +16,8 @@ if [[ "$STATUS" == "charging" ]]; then
     ICON="⚡"
 elif [[ $PERCENTAGE == 100 ]]; then
     ICON="💡"
+elif [[ $PERCENTAGE == 69 ]]; then
+    ICON="🐋"
 elif [[ $PERCENTAGE -ge 60 ]]; then
     ICON="🔋"
 elif [[ $PERCENTAGE -ge 20 ]]; then
