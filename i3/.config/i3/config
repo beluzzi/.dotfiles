@@ -222,6 +222,11 @@ exec $nsi picom -b --config ~/.config/picom/picom.conf
 # starts an emacs deamon
 exec $nsi emacs --daemon
 
+# launces startpage
+
+exec $nsi cd ~/Sandbox/startpage && python -m http.server 8000
+
+
 #  ▗▄▄▖ ▗▄▖ ▗▖    ▗▄▖ ▗▖ ▗▖▗▄▄▖  ▗▄▄▖
 # ▐▌   ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   
 # ▐▌   ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖ ▝▀▚▖
