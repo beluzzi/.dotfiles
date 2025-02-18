@@ -15,16 +15,25 @@ markup=pango
 [battery]
 command=~/.config/i3blocks/scripts/battery.sh
 interval=30
+border=#eaea0e
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
 
 [pomodoro]
 command=~/.config/i3blocks/scripts/pomodoro.sh
 interval=1
+border=#ed0e11
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
 
 [mediaplayer]
 command=~/.config/i3blocks/scripts/media.sh
-interval=2
-label=<span color="#bd93f9">M  </span>
-border=bd93f9
+interval=1
+border=#aa0eed
 border_top=1
 border_right=0
 border_bottom=0
@@ -43,7 +52,7 @@ border_left=0
 [date]
 command=~/.config/i3blocks/scripts/date.sh
 interval=30
-label=<span color="#ff5555">  </span>
+label=<span color="#ff5555">🗓️ </span>
 border=#ff5555
 border_top=1
 border_right=0
@@ -53,3 +62,8 @@ border_left=0
 [network]
 command=~/.config/i3blocks/scripts/network.sh
 interval=30
+border=#0eedaa
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0

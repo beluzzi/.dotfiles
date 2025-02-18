@@ -11,10 +11,10 @@ SSID=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d':' -f2)
 
 # Display status based on connection state
 if [[ "$STATE" == "connected" ]]; then
-    echo "  $SSID"
+    echo "🛜 $SSID"
     echo "Connected to $SSID"
 else
-    echo " Disconnected"
+    echo "⏹️ Disconnected"
     echo "No active connection"
 fi
 

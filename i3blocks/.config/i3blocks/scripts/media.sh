@@ -48,8 +48,23 @@ adjust_volume() {
     fi
 }
 
-# Display metadata along with the volume (headphone emoji)
-echo "$(song_metadata) 🎧 $(get_volume)%"
+# Function to get the volume icon based on the current volume
+get_volume_icon() {
+    current_volume=$(get_volume)
+    
+    if [ "$current_volume" -eq 0 ]; then
+        echo "🔇"  # Muted Speaker
+    elif [ "$current_volume" -le 30 ]; then
+        echo "🔈"  # Speaker Low Volume
+    elif [ "$current_volume" -le 60 ]; then
+        echo "🔉"  # Speaker Medium Volume
+    else
+        echo "🔊"  # Speaker High Volume
+    fi
+}
+
+# Display metadata along with the volume (headphone emoji) and volume icon
+echo "🎧 $(song_metadata) $(get_volume_icon) $(get_volume)%"
 
 # Handle mouse click actions
 case $BLOCK_BUTTON in
@@ -71,3 +86,4 @@ case $BLOCK_BUTTON in
     *)
         ;;
 esac
+
