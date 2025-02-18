@@ -33,7 +33,8 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # ▐▌ ▐▌  █  ▐▌ ▝▜▌▐▌  █▐▌ ▐▌▐▌ ▐▌ ▝▀▚▖
 # ▐▙█▟▌▗▄█▄▖▐▌  ▐▌▐▙▄▄▀▝▚▄▞▘▐▙█▟▌▗▄▄▞▘
 
-for_window [class="KeePassXC"] move scratchpad
+for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
+for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 bindsym $mod+k scratchpad show
 
 floating_modifier $mod
@@ -197,12 +198,7 @@ bindsym XF86AudioMute exec $nsi pactl set-sink-mute @DEFAULT_SINK@ toggle && $re
 bindsym XF86AudioMicMute exec $nsi pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # tray icons
-
-exec $nsi pasystray
 exec $nsi keepassxc
-#exec $nsi thunderbird
-exec $nsi kdeconnect-indicator
-exec $nsi nm-applet
 
 # ▗▄▄▄▖▗▖ ▗▖▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▄▄▄▖ ▗▄▖ ▗▖  ▗▖ ▗▄▄▖
 # ▐▌   ▐▌ ▐▌▐▛▚▖▐▌▐▌     █    █  ▐▌ ▐▌▐▛▚▖▐▌▐▌   
