@@ -2,13 +2,16 @@
 
 # Function to get the current song's artist and title
 song_metadata() {
-    playerctl metadata --format "{{ artist }} <span color=\"#bd93f9\">-</span> {{ title }}"
+    artist_title=$(playerctl metadata --format "{{ artist }} - {{ title }}")
+    # magic dust that makes this not crash on special chars like & - revisit to actually understand this shit later
+    artist_title=$(echo "$artist_title" | sed 's/[&]/\&amp;/g; s/[<]/\&lt;/g; s/[>]/\&gt;/g')
+    printf "%s" "$artist_title"
 }
 
 # Function to get the current volume
 get_volume() {
     # Get the current volume level (0 to 100) from PulseAudio
-     pactl get-sink-volume @DEFAULT_SINK@ | awk '{gsub("%", ""); print $5}'
+    pactl get-sink-volume @DEFAULT_SINK@ | awk '{gsub("%", ""); print $5}'
 }
 
 # Function to set the volume
@@ -69,13 +72,12 @@ get_status() {
     elif [ "$(playerctl status)" = "Paused" ]; then
         echo "⏸️ "
     else
-	echo ""
+        echo ""
     fi
 }
 
 # Display metadata along with the volume (headphone emoji) and volume icon
 echo "$(get_status)$(song_metadata) $(get_volume_icon) $(get_volume)%"
-
 
 # Handle mouse click actions
 case $BLOCK_BUTTON in
