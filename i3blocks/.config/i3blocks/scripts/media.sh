@@ -65,14 +65,17 @@ get_volume_icon() {
 
 get_status() {
     if [ "$(playerctl status)" = "Playing" ]; then
-        echo "🎧"
+        echo "🎧 "
+    elif [ "$(playerctl status)" = "Paused" ]; then
+        echo "⏸️ "
     else
-        echo "⏸️"
+	echo ""
     fi
 }
 
 # Display metadata along with the volume (headphone emoji) and volume icon
-echo "$(get_status) $(song_metadata) $(get_volume_icon) $(get_volume)%"
+echo "$(get_status)$(song_metadata) $(get_volume_icon) $(get_volume)%"
+
 
 # Handle mouse click actions
 case $BLOCK_BUTTON in
