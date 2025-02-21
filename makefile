@@ -54,7 +54,7 @@ help:
 	@echo "Usage:"
 	@echo "  make all          - Stow all packages except i3"
 	@echo "  make i3      - Stow main i3 configuragtion
-	@echo "  make laptop  - Stow laptop configuration"
-	@echo "  make desktop - Stow desktop configuration"
+	@echo "  make laptop  - Stow laptop i3 configuration"
+	@echo "  make desktop - Stow desktop i3 configuration"
 	@echo "  make clean        - Remove all symlinks"
 	@echo "  make help         - Display this help message"
