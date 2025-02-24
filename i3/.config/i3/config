@@ -24,6 +24,7 @@ exec $nsi dex --autostart --environment i3
 focus_follows_mouse yes
 gaps inner 10
 gaps outer 10
+bindsym $mod+Shift+x exec $nsi i3lock -i ~/.dotfiles/i3/crash.png --nofork --ignore-empty-password --show-failed-attempts -u
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"

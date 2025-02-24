@@ -1,15 +1,10 @@
 # Define the directories for stowing, excluding i3laptop and i3desktop
 DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit picom bashrc firefox
 
+# stow -t / etc -> to stow pacman use the -t flag
+
 # Define the default target
 .PHONY: all clean i3 sway laptop desktop help
-
-# Experimental Sway config
-
-sway:
-	@echo "Stowing sway..."
-	@stow sway
-	@swaymsg reload
 
 # Default target to stow all packages except i3 and i3desktop
 all:
