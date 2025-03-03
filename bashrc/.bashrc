@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias d='cd ~/.dotfiles'
+alias c='clear'
 
 # Git fast commit func
 gfc() {
