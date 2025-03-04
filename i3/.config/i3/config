@@ -180,6 +180,7 @@ mode "resize" {
 # program shortcuts
 
 bindsym $mod+x exec $nsi firefox
+bindsym $mod+z exec $nsi zen-browser
 bindsym $mod+o exec $nsi obsidian
 bindsym $mod+Shift+i exec kitty -e vim ~/.dotfiles/i3/.config/i3/config
 bindsym $mod+e exec $nsi emacsclient -c -a 'emacs'
