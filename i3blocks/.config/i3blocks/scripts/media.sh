@@ -57,6 +57,8 @@ get_volume_icon() {
     
     if [ "$current_volume" -eq 0 ]; then
         echo "🔇"  # Muted Speaker
+    elif [ "$current_volume" -eq 100 ]; then
+        echo "📻"
     elif [ "$current_volume" -le 30 ]; then
         echo "🔈"  # Speaker Low Volume
     elif [ "$current_volume" -le 60 ]; then
