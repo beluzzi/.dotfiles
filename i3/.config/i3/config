@@ -7,6 +7,7 @@
 
 set $mod Mod4
 set $nsi --no-startup-id
+set $scripts ~/.config/i3/i3scripts
 set $mozilla ~/.mozilla/firefox/p2gzocof.default-release-1710425565724/chrome/userChrome.css
 
 # font for window titles + bar unless a different font is used in the bar {} block below.
@@ -24,7 +25,7 @@ exec $nsi dex --autostart --environment i3
 focus_follows_mouse yes
 gaps inner 10
 gaps outer 10
-bindsym $mod+Shift+x exec $nsi ~/.dotfiles/scripts/lock.sh
+bindsym $mod+Shift+x exec $nsi $scripts/lock.sh
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
@@ -212,7 +213,7 @@ exec $nsi keepassxc
 exec $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla
 
 # this sets a random wallpaper using pywal & launches the theme script to enable theming for other programs
-exec_always $nsi wal -i ~/.config/.wallpapers/ && exec ~/.dotfiles/scripts/theme.sh
+exec_always $nsi wal -i ~/.config/.wallpapers/ && exec $scripts/theme.sh
 
 # i3 compositor
 exec $nsi picom -b --config ~/.config/picom/picom.conf

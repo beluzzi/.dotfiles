@@ -31,3 +31,4 @@ PS1='[\u@\h \W]\$ '
 eval "$(thefuck --alias)"
 export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:/usr/lib/aurutils
+export PATH=$PATH:~/.scripts

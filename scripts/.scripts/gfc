@@ -1,0 +1,11 @@
+#!/bin/bash
+# Git fast commit
+
+if [ $# -eq 0 ]; then
+        echo "Error: You must provide a commit message."
+        return 1
+    fi
+
+git add .
+git commit -m "$*"
+git push
