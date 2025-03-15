@@ -1,5 +1,8 @@
 # imports main i3config
-include ~/.dotfiles/i3/.config/i3/config
+include ~/.config/i3/masterconfig
+
+set $nsi --no-startup-id
+set $scripts ~/.config/i3/i3scripts
 
 # ▗▄▄▄ ▗▄▄▄▖ ▗▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▖ ▗▄▄▖ 
 # ▐▌  █▐▌   ▐▌   ▐▌▗▞▘  █ ▐▌ ▐▌▐▌ ▐▌

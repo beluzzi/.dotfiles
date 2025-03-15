@@ -267,6 +267,7 @@ default_floating_border pixel
 # ▐▙▄▞▘▐▌ ▐▌▐▌ ▐▌
 
 bar {
+    output primary
     position top
     status_command i3blocks
     colors {
