@@ -1,0 +1,5 @@
+# https://thelinuxcode.com/list_installed_packages_pacman_arch_linux/
+# https://bbs.archlinux.org/viewtopic.php?id=112038
+pacman -Qiet | gawk '/^Name/ { x = $3 }; /^Installed Size/ { sub(/Installed Size  *:/, ""); print x":" $0 }' | sort -k2,3n
+echo "##### AUR #####"
+pacman -Qqm
