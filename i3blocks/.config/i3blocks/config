@@ -68,6 +68,6 @@ border_right=0
 border_bottom=0
 border_left=0
 
-[keepass]
-command=~/.config/i3blocks/scripts/keepass.sh
-interval=60
+#[keepass]
+#command=~/.config/i3blocks/scripts/keepass.sh
+#interval=60

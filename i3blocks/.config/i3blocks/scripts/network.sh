@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the network status using nmcli
-INFO=$(nmcli -t -f DEVICE,TYPE,STATE,CONNECTION dev | grep ':wifi:')
+INFO=$(nmcli -t -f DEVICE,TYPE,STATE,CONNECTION dev | grep 'wifi\|ethernet')
 
 # Extract fields correctly
 IFS=":" read -r DEVICE TYPE STATE CONNECTION <<< "$INFO"
@@ -10,13 +10,24 @@ IFS=":" read -r DEVICE TYPE STATE CONNECTION <<< "$INFO"
 SSID=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d':' -f2)
 
 # Display status based on connection state
+
+
 if [[ "$STATE" == "connected" ]]; then
-    echo "🛜 $SSID"
-    echo "Connected to $SSID"
+	case $TYPE in
+		wifi)
+   		echo "🛜 $SSID"
+    		echo "Connected to $SSID"
+		;;
+		ethernet)
+		echo "🌈"
+		echo "Connected to ethernet"
+		;;
+	esac
 else
     echo "⏹️ Disconnected"
     echo "No active connection"
 fi
+
 
 # Click actions
 case $BLOCK_BUTTON in
