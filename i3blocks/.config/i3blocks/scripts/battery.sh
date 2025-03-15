@@ -1,15 +1,14 @@
 #!/bin/bash
 
-# Get battery info using acpi or upower
-if command -v acpi &> /dev/null; then
-    BATTERY_INFO=$(acpi -b)
-    PERCENTAGE=$(echo "$BATTERY_INFO" | grep -o '[0-9]*%' | tr -d '%')
-    STATUS=$(echo "$BATTERY_INFO" | awk '{print $3}' | tr -d ',')
+# Check if battery exists
+if [ ! -d /sys/class/power_supply/BAT0 ]; then
+	#Change this to whatever - will be displayed on devices without battery
+	echo "🔥 999%"   
 else
-    BATTERY_PATH=$(upower -e | grep battery)
-    PERCENTAGE=$(upower -i "$BATTERY_PATH" | grep 'percentage' | awk '{print $2}' | tr -d '%')
-    STATUS=$(upower -i "$BATTERY_PATH" | grep 'state' | awk '{print $2}')
-fi
+
+# Get battery status and percentage
+    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+    PERCENTAGE=$(cat /sys/class/power_supply/BAT0/capacity)
 
 # Define icons based on charge status
 if [[ "$STATUS" == "charging" ]]; then
@@ -38,4 +37,6 @@ elif [[ $PERCENTAGE -le 40 ]]; then
 else
     echo "#FFFFFF"  # White for normal battery level
 fi
+fi
+
 
