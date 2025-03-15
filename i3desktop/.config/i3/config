@@ -6,4 +6,4 @@ include ~/.dotfiles/i3/.config/i3/config
 # ▐▌  █▐▛▀▀▘ ▝▀▚▖▐▛▚▖   █ ▐▌ ▐▌▐▛▀▘ 
 # ▐▙▄▄▀▐▙▄▄▖▗▄▄▞▘▐▌ ▐▌  █ ▝▚▄▞▘▐▌   
 
-exec_always $nsi ~/.dotfiles/scripts/screens.sh
+exec_always $nsi $scripts/screens.sh

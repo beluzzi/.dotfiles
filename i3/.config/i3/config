@@ -213,7 +213,8 @@ exec $nsi keepassxc
 exec $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla || echo '#TabsToolbar { visibility: collapse !important; }' >> $mozilla
 
 # this sets a random wallpaper using pywal & launches the theme script to enable theming for other programs
-exec_always $nsi wal -i ~/.config/.wallpapers/ && exec $scripts/theme.sh
+# https://github.com/dylanaraps/pywal/wiki/Getting-Started#using-a-custom-wallpaper-setter
+exec_always $nsi wal -i ~/.config/.wallpapers/ -n && feh --bg-tile "$(< "${HOME}/.cache/wal/wal")"   && exec $scripts/theme.sh
 
 # i3 compositor
 exec $nsi picom -b --config ~/.config/picom/picom.conf
