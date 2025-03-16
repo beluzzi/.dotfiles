@@ -275,3 +275,12 @@ bar {
 	focused_workspace	$fg	$c0	$c2
     }
 } 
+
+bar {
+    output nonprimary
+    position top
+    colors {
+	background		$bg
+	focused_workspace	$fg	$c0	$c2
+    }
+}
