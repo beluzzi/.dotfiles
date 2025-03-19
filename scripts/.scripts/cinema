@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Define the primary screen where the movie will be played
+PRIMARY_SCREEN="DP-0"  #Change this to your movie screen identifier
+# Define the other screens to blackout
+OTHER_SCREENS=("HDMI-0" "DP-2")  # Change these to your other screen identifiers
+
+# File to store the blackout state
+STATE_FILE="/tmp/screen_blackout_state"
+
+# Function to blackout other screens
+blackout_screens() {
+    for screen in "${OTHER_SCREENS[@]}"; do
+        xrandr --output "$screen" --off
+    done
+    echo "1" > "$STATE_FILE"  # Set state to blacked out
+}
+
+# Function to restore other screens
+restore_screens() {
+    ~/.config/i3/i3scripts/screens.sh
+    echo "0" > "$STATE_FILE"  # Set state to restored
+}
+
+# Check if the state file exists, if not create it
+if [ ! -f "$STATE_FILE" ]; then
+    echo "0" > "$STATE_FILE"  # Initialize state to restored
+fi
+
+# Read the current state
+CURRENT_STATE=$(cat "$STATE_FILE")
+
+# Toggle the blackout state
+if [ "$CURRENT_STATE" -eq "0" ]; then
+    blackout_screens
+else
+    restore_screens
+fi

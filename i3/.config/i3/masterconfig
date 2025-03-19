@@ -35,7 +35,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # ▐▌ ▐▌  █  ▐▌ ▝▜▌▐▌  █▐▌ ▐▌▐▌ ▐▌ ▝▀▚▖
 # ▐▙█▟▌▗▄█▄▖▐▌  ▐▌▐▙▄▄▀▝▚▄▞▘▐▙█▟▌▗▄▄▞▘
 
-for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
+for_window [class="KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 bindsym $mod+k scratchpad show
 
@@ -225,6 +225,7 @@ exec $nsi emacs --daemon
 # launces startpage
 # exec $nsi cd ~/Sandbox/startpage && python -m http.server 8000
 
+bindsym $mod+Shift+Ctrl+c exec $nsi cinema
 
 #  ▗▄▄▖ ▗▄▖ ▗▖    ▗▄▖ ▗▖ ▗▖▗▄▄▖  ▗▄▄▖
 # ▐▌   ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   
