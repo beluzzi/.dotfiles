@@ -1,4 +1,0 @@
-[main f59159e] changes to i3 configs - sure if I like this tbh
- 3 files changed, 5 insertions(+), 1 deletion(-)
- rename i3/.config/i3/{config => masterconfig} (99%)
- create mode 100644 not
