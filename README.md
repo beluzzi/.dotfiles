@@ -124,7 +124,7 @@ DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit new-package
 ```
 
 ## 🎨 Theme Management
-This setup uses Pywal to generate color schemes based on your wallpaper. The themes are automatically applied to:
+This setup uses Pywal16 to generate color schemes based on your wallpaper. The themes are automatically applied to:
 - `Terminal` - via wal cache
 - `i3` - via Xresources
 - `dmenu` - via i3 config
