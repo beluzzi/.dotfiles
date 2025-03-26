@@ -1,18 +1,46 @@
 #!/bin/bash
-# Git fast commit
 
-# check if git repo is 
-if [ -z "$(git fetch --dry-run 2>&1)" ]; then
-	echo "Warning: Local repo out of sync"
-	return 1
-fi
-
-
+# Check if a commit message is provided
 if [ $# -eq 0 ]; then
-        echo "Error: You must provide a commit message."
-        return 1
+    echo "Error: No commit message provided"
+    exit 1
 fi
 
+# Fetch the latest changes from the remote without pulling
+git fetch origin
+
+# Get current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if local branch is behind remote
+local_commits=$(git rev-parse HEAD)
+remote_commits=$(git rev-parse origin/$current_branch)
+
+# Check if local is behind remote
+if [ "$local_commits" != "$remote_commits" ]; then
+    echo "Local repository is out of sync with remote branch '$current_branch'"
+    echo "Please pull changes before committing"
+    exit 1
+fi
+
+# Check if local has unpushed commits
+unpushed_commits=$(git cherry -v)
+if [ -n "$unpushed_commits" ]; then
+    echo "Local repository has unpushed commits"
+    echo "Please resolve existing unpushed commits first"
+    exit 2
+fi
+
+# If everything is in sync, proceed with commit and push
 git add .
 git commit -m "$*"
 git push
+
+# Check if push was successful
+if [ $? -eq 0 ]; then
+    echo "Successfully committed and pushed changes to '$current_branch'"
+else
+    echo "Error: Push failed"
+    exit 3
+fi
+
