@@ -12,6 +12,13 @@ git fetch origin
 # Get current branch name
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
+# Check for local changes
+local_changes=$(git status --porcelain)
+if [ -z "$local_changes" ]; then
+    echo "No local changes to commit"
+    exit 1
+fi
+
 # Resolve local and remote commit hashes
 local_commits=$(git rev-parse HEAD)
 remote_commits=$(git rev-parse origin/$current_branch)
@@ -23,15 +30,9 @@ git_status=$(git status -uno)
 if [ "$local_commits" != "$remote_commits" ]; then
     # Check if local is behind or ahead based on hash comparison
     if [[ "$git_status" == *"Your branch is behind"* ]]; then
-        # Check for local changes before auto-merging
-        if [[ -z $(git status --porcelain) ]]; then
-            echo "Local repository is behind remote. Auto-merging..."
-            git merge origin/$current_branch
-        else
-            echo "Local repository is behind remote branch '$current_branch'"
-            echo "Cannot auto-merge due to local changes"
-            exit 1
-        fi
+        echo "Local repository is behind remote branch '$current_branch'"
+        echo "Merging remote changes..."
+        git merge origin/$current_branch
     elif [[ "$git_status" == *"Your branch is ahead"* ]]; then
         # Count unpushed commits
         unpushed_commits=$(git cherry -v | wc -l)
@@ -62,4 +63,3 @@ else
     echo "Error: Push failed"
     exit 3
 fi
-
