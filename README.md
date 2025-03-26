@@ -8,7 +8,7 @@ Dotfiles for an i3-based Linux desktop environment, managed with GNU Stow.
   - i3blocks status bar
   - Automatic Pywal color schemes
   - Firefox theming
-  - Rofi and dmenu launchers
+  - Rofi and dmenu
 
 ## 📦 Prerequisites
 Ensure you have the following packages installed:
