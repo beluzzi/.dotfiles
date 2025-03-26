@@ -1,7 +1,8 @@
 #!/bin/bash
 # Git fast commit
 
-if ! [ git fetch --dry-run ]; then
+# check if git repo is 
+if ! [ -z git fetch --dry-run ]; then
 	echo "Warning: Local repo out of sync"
 	return 1
 fi
