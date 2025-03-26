@@ -12,23 +12,42 @@ git fetch origin
 # Get current branch name
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-# Check if local branch is behind remote
+# Resolve local and remote commit hashes
 local_commits=$(git rev-parse HEAD)
 remote_commits=$(git rev-parse origin/$current_branch)
 
-# Check if local is behind remote
-if [ "$local_commits" != "$remote_commits" ]; then
-    echo "Local repository is out of sync with remote branch '$current_branch'"
-    echo "Please pull changes before committing"
-    exit 1
-fi
+# Additional status check for more comprehensive sync assessment
+git_status=$(git status -uno)
 
-# Check if local has unpushed commits
-unpushed_commits=$(git cherry -v)
-if [ -n "$unpushed_commits" ]; then
-    echo "Local repository has unpushed commits"
-    echo "Please resolve existing unpushed commits first"
-    exit 2
+# Compare commit hashes
+if [ "$local_commits" != "$remote_commits" ]; then
+    # Check if local is behind or ahead based on hash comparison
+    if [[ "$git_status" == *"Your branch is behind"* ]]; then
+        # Check for local changes before auto-merging
+        if [[ -z $(git status --porcelain) ]]; then
+            echo "Local repository is behind remote. Auto-merging..."
+            git merge origin/$current_branch
+        else
+            echo "Local repository is behind remote branch '$current_branch'"
+            echo "Cannot auto-merge due to local changes"
+            exit 1
+        fi
+    elif [[ "$git_status" == *"Your branch is ahead"* ]]; then
+        # Count unpushed commits
+        unpushed_commits=$(git cherry -v | wc -l)
+        if [ "$unpushed_commits" -gt 0 ]; then
+            echo "Local repository has $unpushed_commits unpushed commits"
+            echo "Please resolve existing unpushed commits first"
+            exit 2
+        fi
+
+        echo "Local repository is ahead of remote branch '$current_branch'"
+        echo "Proceeding with push..."
+    else
+        # Hash mismatch with no clear ahead/behind status
+        echo "Potential sync conflict detected on branch '$current_branch'"
+        exit 1
+    fi
 fi
 
 # If everything is in sync, proceed with commit and push
