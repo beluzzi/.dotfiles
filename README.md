@@ -13,7 +13,7 @@ Dotfiles for an i3-based Linux desktop environment, managed with GNU Stow.
 ## 📦 Prerequisites
 Ensure you have the following packages installed:
 ```bash
-# Arch Linux
+# Arch btw
 pacman -S i3-wm i3blocks vim kitty picom python-pywal16 firefox dmenu rofi stow
 ```
 
