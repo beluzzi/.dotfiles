@@ -2,7 +2,7 @@
 # Git fast commit
 
 # check if git repo is 
-if ! [ -z git fetch --dry-run ]; then
+if ! [ -z "$(git fetch --dry-run 2>&1)" ]; then
 	echo "Warning: Local repo out of sync"
 	return 1
 fi
