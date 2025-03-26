@@ -108,21 +108,6 @@ stow new-package
 DOTFILES_DIRS := doom keepass kitty rofi i3blocks xinit new-package
 ```
 
-## 🗂️ Directory Structure
-```
-.
-├── doom/          # Doom Emacs configuration
-├── i3/            # i3 main config
-├── i3blocks/      # i3blocks status bar configuration
-├── i3laptop/      # i3 config specific to laptop
-├── i3desktop/     # i3 config specific to desktop
-├── keepass/       # KeePass passwords
-├── kitty/         # Kitty terminal configuration
-├── rofi/          # Rofi launcher configuration
-├── xinit/         # xinitrc to start i3 without a greeter
-└── Makefile       # GNU Make automation
-```
-
 ## 🎨 Theme Management
 This setup uses Pywal16 to generate color schemes based on your wallpaper. The themes are automatically applied to:
 - `Terminal` - via wal cache
