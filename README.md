@@ -121,7 +121,7 @@ This setup uses Pywal16 to generate color schemes based on your wallpaper. The t
 - `make i3` - Stow main i3 configuration
 - `make laptop` - Stow laptop-specific configuration
 - `make desktop` - Stow desktop-specific configuration
-- `make clean` - Remove all symlinks
+- `make clean` - Remove all stowed symlinks
 - `make help` - Display help message
 
 ## 💡 Tips
