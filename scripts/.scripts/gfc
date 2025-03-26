@@ -1,10 +1,16 @@
 #!/bin/bash
 # Git fast commit
 
+if [!git fetch --dry-run]; then
+	echo "Warning: Local repo out of sync"
+	return 1
+fi
+
+
 if [ $# -eq 0 ]; then
         echo "Error: You must provide a commit message."
         return 1
-    fi
+fi
 
 git add .
 git commit -m "$*"
