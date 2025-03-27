@@ -5,12 +5,21 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Color Definitions
+RESET='\[\033[0m\]'
+RED='\[\033[0;31m\]'
+GREEN='\[\033[0;32m\]'
+YELLOW='\[\033[0;33m\]'
+BLUE='\[\033[0;34m\]'
+PURPLE='\[\033[0;35m\]'
+CYAN='\[\033[0;36m\]'
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias d='cd ~/.dotfiles'
 alias sb='source ~/.bashrc'
 
-PS1='[\u@\h \W]\$ '
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 eval "$(thefuck --alias)"
 
@@ -32,7 +41,9 @@ HISTFILESIZE=99999
 HISTSIZE=99999
 
 # Set Bash to save each command to history, right after it has been executed.
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='history -a;   # Write current session history
+                history -n;   # Read new history from file
+                '
 
 # Save multi-line commands in one history entry.
 shopt -s cmdhist
@@ -41,3 +52,10 @@ shopt -s cmdhist
 # History substitution are not immediately passed to the shell parser.
 shopt -s histappend histverify
 
+source /usr/share/git/completion/git-prompt.sh
+
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWUPSTREAM=verbose
