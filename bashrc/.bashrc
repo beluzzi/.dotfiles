@@ -19,6 +19,7 @@ alias grep='grep --color=auto'
 alias d='cd ~/.dotfiles'
 alias sb='source ~/.bashrc'
 
+# Change this so that there is a user@host whenever SSH is active but I cant be asked to do that rn
 PS1='$? \W$(__git_ps1 " (%s)")\$ '
 
 eval "$(thefuck --alias)"
