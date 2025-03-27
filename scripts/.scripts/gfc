@@ -15,51 +15,46 @@ fi
 # Fetch the latest changes from the remote without pulling
 git fetch origin
 
-# Get current branch name
+# Group variables together
 current_branch=$(git rev-parse --abbrev-ref HEAD)
+local_changes=$(git status --porcelain)
+local_commits=$(git rev-parse HEAD)
+remote_commits=$(git rev-parse origin/$current_branch)
+git_status=$(git status -uno)
 
 # Check for local changes
-local_changes=$(git status --porcelain)
 if [ -z "$local_changes" ]; then
     echo -e "${PURPLE}${WHITE}No local changes to commit${ENDCOLOR}"
     exit 1
 fi
 
-# Resolve local and remote commit hashes
-local_commits=$(git rev-parse HEAD)
-remote_commits=$(git rev-parse origin/$current_branch)
-
-# Additional status check for more comprehensive sync assessment
-git_status=$(git status -uno)
-
-# Compare commit hashes
-if [ "$local_commits" != "$remote_commits" ]; then
-    # Check if local is behind or ahead based on hash comparison
-    if [[ "$git_status" == *"Your branch is behind"* ]]; then
-        echo -e "${PURPLE}${WHITE}Local repository is behind remote branch '$current_branch'${ENDCOLOR}"
-        echo -e "${PURPLE}${WHITE}Merging remote changes...${ENDCOLOR}"
-        git merge origin/$current_branch
-    elif [[ "$git_status" == *"Your branch is ahead"* ]]; then
-        # Count unpushed commits
-        unpushed_commits=$(git cherry -v | wc -l)
-        if [ "$unpushed_commits" -gt 0 ]; then
-            echo -e "${PURPLE}${WHITE}Local repository has $unpushed_commits unpushed commits$ENDCOLOR}"
-            echo -e "${PURPLE}${WHITE}Please resolve existing unpushed commits first${ENDCOLOR}"
-            exit 2
-        fi
-
-        echo -e "${GREEN}${WHITE}Local repository is ahead of remote branch '$current_branch'${ENDCOLOR}"
-        echo -e "${GREEN}${WHITE}Proceeding with push...${ENDCOLOR}"
+# Check if local is behind remote
+if [[ "$git_status" == *"Your branch is behind"* ]]; then
+    echo -e "${PURPLE}${WHITE}Local repository is behind remote branch '$current_branch'${ENDCOLOR}"
+    
+    # Notify about fast-forward merge attempt
+    echo -e "${PURPLE}${WHITE}Attempting fast-forward merge${ENDCOLOR}"
+    
+    # Attempt fast-forward merge only
+    git merge --ff-only origin/$current_branch
+    
+    # Check merge result
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}${WHITE}Fast-forward merge successful${ENDCOLOR}"
     else
-        # Hash mismatch with no clear ahead/behind status
-        echo -e "${RED}${WHITE}Potential sync conflict detected on branch '$current_branch'${ENDCOLOR}"
+        echo -e "${RED}${WHITE}Fast-forward merge not possible. Manual intervention required.${ENDCOLOR}"
         exit 1
     fi
 fi
 
-# If everything is in sync, proceed with commit and push
+# Indicate commit is clear to go ahead
+echo -e "${GREEN}${WHITE}Committing changes to '$current_branch'${ENDCOLOR}"
+
+# Add all changes and commit
 git add .
 git commit -m "$*"
+
+# Push changes
 git push
 
 # Check if push was successful
