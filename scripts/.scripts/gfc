@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 RED="\e[48;5;124m"    # Darker red background
 GREEN="\e[48;5;28m"   # Dark green background
 PURPLE="\e[48;5;93m"  # Purple background
@@ -57,7 +55,6 @@ if [ "$local_commits" != "$remote_commits" ]; then
             echo -e "${PURPLE}${WHITE}Please resolve existing unpushed commits first${ENDCOLOR}"
             exit 2
         fi
-
     else
         # Hash mismatch with no clear ahead/behind status
         echo -e "${RED}${WHITE}Potential sync conflict detected on branch '$current_branch'${ENDCOLOR}"
