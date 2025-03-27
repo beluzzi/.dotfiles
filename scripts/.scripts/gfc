@@ -56,7 +56,6 @@ if [ "$local_commits" != "$remote_commits" ]; then
             exit 2
         fi
 
-        echo -e "${GREEN}${WHITE}Local repository is ahead of remote branch '$current_branch'${ENDCOLOR}"
     else
         # Hash mismatch with no clear ahead/behind status
         echo -e "${RED}${WHITE}Potential sync conflict detected on branch '$current_branch'${ENDCOLOR}"
@@ -65,6 +64,7 @@ if [ "$local_commits" != "$remote_commits" ]; then
 fi
 
 # Indicate commit is clear to go ahead
+echo -e "${GREEN}${WHITE}Local repository is ahead of remote branch '$current_branch'${ENDCOLOR}"
 echo -e "${GREEN}${WHITE}Committing changes to '$current_branch'${ENDCOLOR}"
 
 # Add all changes and commit
