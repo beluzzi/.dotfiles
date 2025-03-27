@@ -21,7 +21,7 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 # Check for local changes
 local_changes=$(git status --porcelain)
 if [ -z "$local_changes" ]; then
-    echo "No local changes to commit"
+    echo -e "${PURPLE}${WHITE}No local changes to commit${ENDCOLOR}"
     exit 1
 fi
 
