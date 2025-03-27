@@ -221,6 +221,7 @@ exec_always $nsi picom -b --config ~/.config/picom/picom.conf
 
 # starts an emacs deamon
 exec $nsi emacs --daemon
+exec $nsi kdeconnectd
 
 # launces startpage
 # exec $nsi cd ~/Sandbox/startpage && python -m http.server 8000
