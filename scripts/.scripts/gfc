@@ -1,8 +1,14 @@
 #!/bin/bash
 
+RED="\e[48;5;124m"    # Darker red background
+GREEN="\e[48;5;28m"   # Dark green background
+PURPLE="\e[48;5;93m"  # Purple background
+WHITE="\e[97m"        # White text
+ENDCOLOR="\e[0m"      # Reset color
+
 # Check if a commit message is provided
 if [ $# -eq 0 ]; then
-    echo "Error: No commit message provided"
+	echo -e "${RED}${WHITE}Error: no commit message provided${ENDCOLOR}"
     exit 1
 fi
 
@@ -30,23 +36,23 @@ git_status=$(git status -uno)
 if [ "$local_commits" != "$remote_commits" ]; then
     # Check if local is behind or ahead based on hash comparison
     if [[ "$git_status" == *"Your branch is behind"* ]]; then
-        echo "Local repository is behind remote branch '$current_branch'"
-        echo "Merging remote changes..."
+        echo -e "${PURPLE}${WHITE}Local repository is behind remote branch '$current_branch'${ENDCOLOR}"
+        echo -e "${PURPLE}${WHITE}Merging remote changes...${ENDCOLOR}"
         git merge origin/$current_branch
     elif [[ "$git_status" == *"Your branch is ahead"* ]]; then
         # Count unpushed commits
         unpushed_commits=$(git cherry -v | wc -l)
         if [ "$unpushed_commits" -gt 0 ]; then
-            echo "Local repository has $unpushed_commits unpushed commits"
-            echo "Please resolve existing unpushed commits first"
+            echo -e "${PURPLE}${WHITE}Local repository has $unpushed_commits unpushed commits$ENDCOLOR}"
+            echo -e "${PURPLE}${WHITE}Please resolve existing unpushed commits first${ENDCOLOR}"
             exit 2
         fi
 
-        echo "Local repository is ahead of remote branch '$current_branch'"
-        echo "Proceeding with push..."
+        echo -e "${GREEN}${WHITE}Local repository is ahead of remote branch '$current_branch'${ENDCOLOR}"
+        echo -e "${GREEN}${WHITE}Proceeding with push...${ENDCOLOR}"
     else
         # Hash mismatch with no clear ahead/behind status
-        echo "Potential sync conflict detected on branch '$current_branch'"
+        echo -e "${RED}${WHITE}Potential sync conflict detected on branch '$current_branch'${ENDCOLOR}"
         exit 1
     fi
 fi
@@ -58,8 +64,8 @@ git push
 
 # Check if push was successful
 if [ $? -eq 0 ]; then
-    echo "Successfully committed and pushed changes to '$current_branch'"
+    echo -e "${GREEN}${WHITE}Successfully committed and pushed changes to '$current_branch'${ENDCOLOR}"
 else
-    echo "Error: Push failed"
+    echo -e "${RED}${WHITE}Error: Push failed${ENDCOLOR}"
     exit 3
 fi
