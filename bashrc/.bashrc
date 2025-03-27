@@ -52,10 +52,11 @@ shopt -s cmdhist
 # History substitution are not immediately passed to the shell parser.
 shopt -s histappend histverify
 
+# Git prompts
 source /usr/share/git/completion/git-prompt.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWUPSTREAM=verbose
+GIT_PS1_COMMIT_COUNT=true
