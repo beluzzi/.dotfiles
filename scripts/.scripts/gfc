@@ -28,21 +28,38 @@ if [ -z "$local_changes" ]; then
     exit 1
 fi
 
-# Check if local is behind remote
-if [[ "$git_status" == *"Your branch is behind"* ]]; then
-    echo -e "${PURPLE}${WHITE}Local repository is behind remote branch '$current_branch'${ENDCOLOR}"
-    
-    # Notify about fast-forward merge attempt
-    echo -e "${PURPLE}${WHITE}Attempting fast-forward merge${ENDCOLOR}"
-    
-    # Attempt fast-forward merge only
-    git merge --ff-only origin/$current_branch
-    
-    # Check merge result
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}${WHITE}Fast-forward merge successful${ENDCOLOR}"
+# Compare commit hashes
+if [ "$local_commits" != "$remote_commits" ]; then
+    # Check if local is behind or ahead based on hash comparison
+    if [[ "$git_status" == *"Your branch is behind"* ]]; then
+        echo -e "${PURPLE}${WHITE}Local repository is behind remote branch '$current_branch'${ENDCOLOR}"
+        
+        # Notify about fast-forward merge attempt
+        echo -e "${PURPLE}${WHITE}Attempting fast-forward merge${ENDCOLOR}"
+        
+        # Attempt fast-forward merge only
+        git merge --ff-only origin/$current_branch
+        
+        # Check merge result
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}${WHITE}Fast-forward merge successful${ENDCOLOR}"
+        else
+            echo -e "${RED}${WHITE}Fast-forward merge not possible. Manual intervention required.${ENDCOLOR}"
+            exit 1
+        fi
+    elif [[ "$git_status" == *"Your branch is ahead"* ]]; then
+        # Count unpushed commits
+        unpushed_commits=$(git cherry -v | wc -l)
+        if [ "$unpushed_commits" -gt 0 ]; then
+            echo -e "${PURPLE}${WHITE}Local repository has $unpushed_commits unpushed commits${ENDCOLOR}"
+            echo -e "${PURPLE}${WHITE}Please resolve existing unpushed commits first${ENDCOLOR}"
+            exit 2
+        fi
+
+        echo -e "${GREEN}${WHITE}Local repository is ahead of remote branch '$current_branch'${ENDCOLOR}"
     else
-        echo -e "${RED}${WHITE}Fast-forward merge not possible. Manual intervention required.${ENDCOLOR}"
+        # Hash mismatch with no clear ahead/behind status
+        echo -e "${RED}${WHITE}Potential sync conflict detected on branch '$current_branch'${ENDCOLOR}"
         exit 1
     fi
 fi
