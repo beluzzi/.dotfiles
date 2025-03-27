@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 RED="\e[48;5;124m"    # Darker red background
 GREEN="\e[48;5;28m"   # Dark green background
 PURPLE="\e[48;5;93m"  # Purple background
