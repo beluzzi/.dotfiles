@@ -19,15 +19,16 @@ alias grep='grep --color=auto'
 alias d='cd ~/.dotfiles'
 alias sb='source ~/.bashrc'
 
-# Change this so that there is a user@host whenever SSH is active but I cant be asked to do that rn
-PS1='$? \W$(__git_ps1 " (%s)")\$ '
-
 eval "$(thefuck --alias)"
-
 export PATH=$PATH:~/.config/emacs/bin
-export PATH=$PATH:/usr/lib/aurutils
 export PATH=$PATH:~/.scripts
 
+# Change this so that there is a user@host whenever SSH is active but I cant be asked to do that rn
+PS1='$? \W$(__git_ps1 " (%s)")\$ '
+# Set Bash to save each command to history, right after it has been executed.
+PROMPT_COMMAND='history -a;   # Write current session history
+                history -n;   # Read new history from file
+                '
 # Ignore lines which begin with a <space> and match previous entries.
 # Erase duplicate entries in history file.
 HISTCONTROL=ignoreboth:erasedups
@@ -40,11 +41,6 @@ HISTFILESIZE=99999
 
 # The number of entries to save in the history file.
 HISTSIZE=99999
-
-# Set Bash to save each command to history, right after it has been executed.
-PROMPT_COMMAND='history -a;   # Write current session history
-                history -n;   # Read new history from file
-                '
 
 # Save multi-line commands in one history entry.
 shopt -s cmdhist
