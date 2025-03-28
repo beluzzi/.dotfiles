@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Change this so that there is a user@host whenever SSH is active but I cant be asked to do that rn
+PS1='$? \W$(__git_ps1 " (%s)")\$ '
+
 # Color Definitions
 RESET='\[\033[0m\]'
 RED='\[\033[0;31m\]'
@@ -23,8 +26,6 @@ eval "$(thefuck --alias)"
 export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:~/.scripts
 
-# Change this so that there is a user@host whenever SSH is active but I cant be asked to do that rn
-PS1='$? \W$(__git_ps1 " (%s)")\$ '
 # Set Bash to save each command to history, right after it has been executed.
 PROMPT_COMMAND='history -a;   # Write current session history
                 history -n;   # Read new history from file
@@ -36,18 +37,24 @@ HISTCONTROL=ignoreboth:erasedups
 # Ignore saving short- and other listed commands to the history file.
 HISTIGNORE=?:??:history
 
-# The maximum number of lines in the history file.
-HISTFILESIZE=99999
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
 
-# The number of entries to save in the history file.
-HISTSIZE=99999
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
 
-# Save multi-line commands in one history entry.
-shopt -s cmdhist
+# Bash history: “ignoredups” and “erasedups” setting conflict with common history across sessions
+# https://unix.stackexchange.com/questions/18212/bash-history-ignoredups-and-erasedups-setting-conflict-with-common-history/18443#18443?newreg=ad3ea662cd754c148058a0c44d22102f
+# https://www.linuxjournal.com/content/using-bash-history-more-efficiently-histcontrol
+HISTCONTROL=ignorespace:ignoredups:erasedups
+shopt -s histappend
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
-# Append commands to the history file, instead of overwriting it.
-# History substitution are not immediately passed to the shell parser.
-shopt -s histappend histverify
+shopt -s histverify
 
 # Git prompts
 # https://mjswensen.com/blog/git-status-prompt-options/
