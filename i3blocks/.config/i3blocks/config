@@ -12,6 +12,19 @@ color=#f8f8f2
 separator_block_width=15
 markup=pango
 
+[trivia]
+command=~/.config/i3blocks/scripts/trivia.py
+# https://unix.stackexchange.com/questions/628299/are-interval-persist-or-repeat-in-i3blocks-a-bad-idea-what-is-the-proper-way-t
+# interval=Master
+# signal=10
+interval=once
+border=#eaea0e
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+
 [battery]
 command=~/.config/i3blocks/scripts/battery.sh
 interval=30
