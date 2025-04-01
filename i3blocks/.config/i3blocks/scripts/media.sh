@@ -1,8 +1,10 @@
 #!/bin/bash
 
+player="ncspot"
+
 # Function to get the current song's artist and title
 song_metadata() {
-    artist_title=$(playerctl metadata --format "{{ artist }} - {{ title }}")
+    artist_title=$(playerctl --player=ncspot,%any metadata --format "{{ artist }} - {{ title }}")
     # magic dust that makes this not crash on special chars like & - revisit to actually understand this shit later
     artist_title=$(echo "$artist_title" | sed 's/[&]/\&amp;/g; s/[<]/\&lt;/g; s/[>]/\&gt;/g')
     printf "%s" "$artist_title"
@@ -21,17 +23,17 @@ set_volume() {
 
 # Function to handle the previous song
 previous_song() {
-    playerctl previous
+    playerctl --player=$player,%any previous
 }
 
 # Function to handle the next song
 next_song() {
-    playerctl next
+    playerctl --player=$player,%any next
 }
 
 # Function to toggle play/pause
 toggle_pause() {
-    playerctl play-pause
+    playerctl --player=$player,%any play-pause
 }
 
 # Function to change the volume based on scroll direction
@@ -69,9 +71,9 @@ get_volume_icon() {
 }
 
 get_status() {
-    if [ "$(playerctl status)" = "Playing" ]; then
+	if [ "$(playerctl --player=$player,%any status)" = "Playing" ]; then
         echo "🎧 "
-    elif [ "$(playerctl status)" = "Paused" ]; then
+    elif [ "$(playerctl --player=$player,%any status)" = "Paused" ]; then
         echo "⏸️ "
     else
         echo ""
