@@ -1,0 +1,30 @@
+#!/bin/bash
+
+RED="\e[48;5;124m"    # Darker red background
+GREEN="\e[48;5;28m"   # Dark green background
+PURPLE="\e[48;5;93m"  # Purple background
+WHITE="\e[97m"        # White text
+ENDCOLOR="\e[0m"      # Reset color
+
+# Get the git status in a format suitable for parsing
+git_status=$(git status --porcelain)
+
+# Set IFS to newline to handle lines correctly
+IFS=$'\n'
+
+# Loop through each line of git status
+for line in $git_status; do
+  char="${line:0:1}"  # Get the first character of the line
+  case $char in
+    M)
+      echo -e "${RED}${line}${ENDCOLOR}"  # Print modified lines in red
+      ;;
+    A)
+      echo -e "${GREEN}${line}${ENDCOLOR}"  # Print new files in green
+      ;;
+    ?)
+      echo -e "${PURPLE}${line}${ENDCOLOR}"  # Print untracked lines in purple
+      ;;
+  esac
+done
+
