@@ -12,19 +12,24 @@ git_status=$(git status --porcelain)
 # Set IFS to newline to handle lines correctly
 IFS=$'\n'
 
-# Loop through each line of git status
-for line in $git_status; do
-  char="${line:0:1}"  # Get the first character of the line
-  case $char in
-    M)
-      echo -e "${RED}${line}${ENDCOLOR}"  # Print modified lines in red
-      ;;
-    A)
-      echo -e "${GREEN}${line}${ENDCOLOR}"  # Print new files in green
-      ;;
-    ?)
-      echo -e "${PURPLE}${line}${ENDCOLOR}"  # Print untracked lines in purple
-      ;;
-  esac
-done
+# Check if there are any changes
+if [ -z "$git_status" ]; then
+  echo -e "${GREEN}Nothing has changed.${ENDCOLOR}"  # Print message in green
+else
+  # Loop through each line of git status
+  for line in $git_status; do
+    char="${line:0:1}"  # Get the first character of the line
+    case $char in
+      M)
+        echo -e "${RED}${line}${ENDCOLOR}"  # Print modified lines in red
+        ;;
+      A)
+        echo -e "${GREEN}${line}${ENDCOLOR}"  # Print new files in green
+        ;;
+      ?)
+        echo -e "${PURPLE}${line}${ENDCOLOR}"  # Print untracked lines in purple
+        ;;
+    esac
+  done
+fi
 
