@@ -190,6 +190,8 @@ bindsym $mod+e exec $nsi emacsclient -c -a 'emacs'
 bindsym $mod+Return exec sh -c 'kitty || uxterm'
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 
+# https://unix.stackexchange.com/questions/49650/how-to-get-keycodes-for-xmodmap
+# do this shit 
 # other shortcuts
 
 bindsym $mod+Shift+s exec magick import clipboard:
