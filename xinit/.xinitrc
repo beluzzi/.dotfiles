@@ -36,3 +36,6 @@ fi
 if [ -f /usr/bin/i3 ]; then
     exec i3
 fi
+
+# https://bbs.archlinux.org/viewtopic.php?id=259867
+setxkbmap -layout us -variant intl
