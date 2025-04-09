@@ -81,6 +81,10 @@ border_right=0
 border_bottom=0
 border_left=0
 
+[keys]
+command=~/.config/i3blocks/scripts/keys.sh
+interval=once
+
 #[keepass]
 #command=~/.config/i3blocks/scripts/keepass.sh
 #interval=60
