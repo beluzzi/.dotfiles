@@ -35,7 +35,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # ▐▌ ▐▌  █  ▐▌ ▝▜▌▐▌  █▐▌ ▐▌▐▌ ▐▌ ▝▀▚▖
 # ▐▙█▟▌▗▄█▄▖▐▌  ▐▌▐▙▄▄▀▝▚▄▞▘▐▙█▟▌▗▄▄▞▘
 
-for_window [class="KeePassXC"] floating enable, move scratchpad
+# for_window [class="KeePassXC"] floating enable, move scratchpad
 bindsym $mod+k scratchpad show
 
 floating_modifier $mod
