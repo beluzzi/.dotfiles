@@ -35,7 +35,10 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # ▐▌ ▐▌  █  ▐▌ ▝▜▌▐▌  █▐▌ ▐▌▐▌ ▐▌ ▝▀▚▖
 # ▐▙█▟▌▗▄█▄▖▐▌  ▐▌▐▙▄▄▀▝▚▄▞▘▐▙█▟▌▗▄▄▞▘
 
-# for_window [class="KeePassXC"] floating enable, move scratchpad
+# I think the autotype is broken here due to stuff being forcibly moved to scratchpad
+for_window [title="Passwords - KeePassXC"] resize set 1600 900, move scratchpad
+for_window [title="Auto-Type - KeePassXC"] floating enable, resize set 700 250
+for_window [title="KeePassXC - Browser Access Request"] floating enable, resize set 700 250
 bindsym $mod+k scratchpad show
 
 floating_modifier $mod
