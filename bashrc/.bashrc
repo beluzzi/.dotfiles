@@ -25,6 +25,7 @@ alias sb='source ~/.bashrc'
 eval "$(thefuck --alias)"
 export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:~/.scripts
+export PATH=$PATH:/etc/profile
 
 # Set Bash to save each command to history, right after it has been executed.
 PROMPT_COMMAND='history -a;   # Write current session history
