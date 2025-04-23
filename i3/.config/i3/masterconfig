@@ -191,6 +191,7 @@ bindsym $mod+z exec $nsi zen-browser
 bindsym $mod+o exec $nsi obsidian
 bindsym $mod+Shift+i exec kitty -e vim ~/.dotfiles/i3/.config/i3/masterconfig
 bindsym $mod+e exec $nsi emacsclient -c -a 'emacs'
+# launches uxterm if kitty fails to install for some reason
 bindsym $mod+Return exec sh -c 'kitty || uxterm'
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 
@@ -222,7 +223,8 @@ exec $nsi grep -qxF '#TabsToolbar { visibility: collapse !important; }' $mozilla
 
 # this sets a random wallpaper using pywal & launches the theme script to enable theming for other programs
 # https://github.com/dylanaraps/pywal/wiki/Getting-Started#using-a-custom-wallpaper-setter
-exec_always $nsi wal -i ~/.config/.wallpapers/ -n && feh --bg-tile "$(< "${HOME}/.cache/wal/wal")"   && exec $scripts/theme.sh
+# https://retropie.org.uk/forum/topic/30856/solved-using-feh-to-display-image-on-second-monitor-runcommand_onstart/2
+exec_always $nsi wal -i ~/.config/.wallpapers/ -n && feh --no-xinerama --bg-fill "$(< "${HOME}/.cache/wal/wal")"   && exec $scripts/theme.sh
 
 # i3 compositor
 exec_always $nsi picom -b --config ~/.config/picom/picom.conf
