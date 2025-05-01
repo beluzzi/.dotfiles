@@ -27,17 +27,6 @@ export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:~/.scripts
 export PATH=$PATH:/etc/profile
 
-# Set Bash to save each command to history, right after it has been executed.
-PROMPT_COMMAND='history -a;   # Write current session history
-                history -n;   # Read new history from file
-                '
-# Ignore lines which begin with a <space> and match previous entries.
-# Erase duplicate entries in history file.
-HISTCONTROL=ignoreboth:erasedups
-
-# Ignore saving short- and other listed commands to the history file.
-HISTIGNORE=?:??:history
-
 # Undocumented feature which sets the size to "unlimited".
 # http://stackoverflow.com/questions/9457233/unlimited-bash-history
 export HISTFILESIZE=
