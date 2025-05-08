@@ -13,12 +13,6 @@ all:
 		stow $$dir; \
 	done
 
-# Target to stow default i3 configuration
-i3 :
-	@echo "Stowing i3..."
-	@stow i3
-	@stow wallpapers
-	@i3-msg reload
 
 # Target to stow all packages except the i3 and i3desktop directories
 desktop: all
