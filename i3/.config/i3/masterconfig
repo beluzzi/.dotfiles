@@ -28,7 +28,17 @@ gaps outer 10
 bindsym $mod+Shift+x exec $nsi $scripts/lock.sh
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+mode "exit: [e]xit, [r]eboot, [s]hutdown" {
+  bindsym e exec i3-msg exit
+  bindsym r exec systemctl reboot
+  bindsym s exec systemctl shutdown
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+# add a lockscreen mechanism for the laptop config here instead
+}
+
+bindsym $mod+shift+q mode "exit: [e]xit, [r]eboot, [s]hutdown"
 
 # ▗▖ ▗▖▗▄▄▄▖▗▖  ▗▖▗▄▄▄  ▗▄▖ ▗▖ ▗▖ ▗▄▄▖
 # ▐▌ ▐▌  █  ▐▛▚▖▐▌▐▌  █▐▌ ▐▌▐▌ ▐▌▐▌   
@@ -199,6 +209,7 @@ bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 # do this shit 
 # other shortcuts
 
+# needs magick and xclip
 bindsym $mod+Shift+s exec magick import clipboard:
 
 # use pactl to adjust volume in PulseAudio.
