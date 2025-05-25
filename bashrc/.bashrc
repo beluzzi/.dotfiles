@@ -21,6 +21,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias d='cd ~/.dotfiles'
 alias sb='source ~/.bashrc'
+alias icat='kitty icat'
 
 eval "$(thefuck --alias)"
 export PATH=$PATH:~/.config/emacs/bin
