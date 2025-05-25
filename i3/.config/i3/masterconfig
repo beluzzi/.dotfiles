@@ -32,7 +32,8 @@ bindsym $mod+Shift+r restart
 mode "exit: [e]xit, [r]eboot, [s]hutdown" {
   bindsym e exec i3-msg exit
   bindsym r exec systemctl reboot
-  bindsym s exec systemctl shutdown now
+# changed this to polkit from "systemctl shutdown" to allow non sudo users to interact with power options 
+  bindsym s exec systemctl poweroff -i
   bindsym Escape mode "default"
   bindsym Return mode "default"
 # add a lockscreen mechanism for the laptop config here instead
