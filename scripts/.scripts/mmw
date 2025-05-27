@@ -155,6 +155,7 @@ else
       exit 1
     fi
   done
+  # TODO add a magick convert 1.png 1.jpg loop so both formats work out of the box
 fi
 
 log "Final screen setup:"
@@ -194,7 +195,7 @@ done
 # Execute the magick command to create the combined wallpaper
 log "Executing ImageMagick command..."
 if eval "magick -background none $cmd +append wallpaper.jpg"; then
-  echo "Successfully created wallpaper.jpg."
+  echo "Successfully created wallpaper.jpg"
   log "Wallpaper created successfully."
 else
   echo "Failed to create wallpaper. Check for errors."
